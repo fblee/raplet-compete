@@ -1,15 +1,6 @@
+<% if @domain %>
 <div class="wrapper">
-    <p>Config params: <img src="/images/smiley.png" alt="Smiley" class="smiley"></p>
-    <ul>
-        <% for key, value in @request.user.config %>
-            <li><%= h key %> = <%= h value %></li>
-        <% end %>
-    </ul>
-
-    <p>Request params:</p>
-    <ul>
-        <% for key, value in @request.params %>
-            <li><%= h key %> = <%= h value %></li>
-        <% end %>
-    </ul>
+    <!-- width of 100% makes it fit nicely in the sidebar even if the sidebar is in narrow mode -->
+    <a href='http://siteanalytics.compete.com/<%= h @domain %>/?metric=uv'><img src='http://grapher.compete.com/<%= h @domain %>_uv_310.png' width="100%" /></a>
 </div>
+<% end %>

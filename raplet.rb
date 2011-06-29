@@ -31,6 +31,7 @@ class Raplet < Sinatra::Base
 
     # The @request object encapsulates the Raplet's business logic.
     @request = Request.new(user, filtered_params.with_indifferent_access)
+    @domain = @request.params['email'] && @request.params['email'].gsub(/^.+@/, '')
 
     # Render the response.erb template to form the HTML part of the raplet response.
     # The template can access the @request object.
@@ -46,16 +47,14 @@ class Raplet < Sinatra::Base
   # Returns a static hash of useful information about the Raplet.
   def metadata
     {
-      :name => "My Custom Raplet",
-      :description => "This is just a template. Customize it for your own purposes.",
+      :name => "Compete Site Analytics",
+      :description => "Graphs the unique visitors to the domain of a user's email address.",
       :welcome_text => %q{
-        <p>Welcome to your new Raplet!</p>
-        <p>This is the welcome text, which is displayed before a user installs the Raplet.
-        You can use it to explain what the Raplet provides, and why the user might be
-        interested in using it. You can include HTML for <em>formatting</em>.</p>
+        <p>Compete!</p>
       },
-      :provider_name => "Your name",
-      :provider_url => "http://example.com",
+      :provider_name => "Lee Mallabone",
+      :small_icon_url => 'http://apps.compete.com/favicon.ico',
+      :provider_url => "http://fonicmonkey.net",
       :config_url => "#{raplet_base_url}/config"
     }
   end
